@@ -1,0 +1,49 @@
+---
+domain: wa.apps.isium.de
+
+env:
+  secretKey: aIx7QcNEtPDtibfdI2uW93ABgFDPnB7R
+  adminToken: ExrlqUvTv0btbqBoN3VdnZWjKhS083ah
+  jitsiUrl: jitsi.isium.de
+
+back:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx-public
+
+front:
+  env:
+    turnServer: "turn:coturn.isium.de:80,turns:coturn.isium.de:443"
+
+  extraEnvs:
+    - name: TURN_STATIC_AUTH_SECRET
+      value: sikIxUeeAyNShVmIToYHKkn1hlRPRxbY
+    - name: DEBUG_MODE
+      value: "true"
+
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx-public
+
+pusher:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx-public
+
+uploader:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx-public
+
+maps:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx-public
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 2048Mi
+  requests:
+    cpu: 100m
+    memory: 1024Mi

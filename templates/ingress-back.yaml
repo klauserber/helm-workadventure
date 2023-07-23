@@ -22,7 +22,7 @@ spec:
   tls:
     {{- range .Values.back.ingress.tls }}
     - hosts:
-        {{- range .hosts }}        
+        {{- range .hosts }}
         {{ $fqdn := printf "%s.%s" . $.Values.domain -}}
         - {{ $fqdn }}
         {{- end }}
